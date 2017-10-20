@@ -1,0 +1,7 @@
+@import "~semantic-ui-css/semantic.css";
+@import "./fonts.css";
+
+html *
+{
+    font-family: iransans !important;
+}
