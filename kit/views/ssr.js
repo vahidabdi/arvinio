@@ -10,12 +10,12 @@ import PropTypes from 'prop-types';
 // ----------------------
 
 const Html = ({ helmet, scripts, window, css, children }) => (
-  <html lang="en" prefix="og: http://ogp.me/ns#" {...helmet.htmlAttributes.toString()}>
+  <html lang="fa" prefix="og: http://ogp.me/ns#" {...helmet.htmlAttributes.toString()} dir="rtl">
     <head>
       {helmet.title.toComponent()}
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta httpEquiv="Content-Language" content="en" />
+      <meta httpEquiv="Content-Language" content="fa" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       {helmet.meta.toComponent()}
       {helmet.base.toString() ? helmet.base.toComponent() : <base href="/" />}
