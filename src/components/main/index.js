@@ -30,7 +30,6 @@ import React from 'react';
 
 // Routing via React Router
 import {
-  Link,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -40,71 +39,23 @@ import Helmet from 'react-helmet';
 
 /* ReactQL */
 
-// NotFound 404 handler for unknown routes, and the app-wide `history` object
-// we can use to make route changes from anywhere
-import { Redirect, history } from 'kit/lib/routing';
-
-/* App */
-
 // Child React components. Note:  We can either export one main React component
 // per file, or in the case of <Home>, <Page> and <WhenFound>, we can group
 // multiple components per file where it makes sense to do so
-import GraphQLMessage from 'components/graphql';
-import { Home, Page, WhenNotFound } from 'components/routes';
-import ReduxCounter from 'components/redux';
-import Stats from 'components/stats';
-import Styles from 'components/styles';
+import Landing from 'components/landing';
+import Login from 'components/login';
 
-// Styles
-import css from './main.scss';
-
-// Get the ReactQL logo.  This is a local .svg file, which will be made
-// available as a string relative to [root]/dist/assets/img/
-import logo from './reactql-logo.svg';
-
-// ----------------------
-
-// Example function to show that the `history` object can be changed from
-// anywhere, simply by importing it-- use this in Redux actions, functions,
-// React `onClick` events, etc.
-function changeRoute() {
-  history.push('/page/about');
-}
 
 export default () => (
   <div>
     <Helmet>
-      <title>ReactQL application</title>
-      <meta name="description" content="ReactQL starter kit app" />
+      <title>ArvinIO</title>
+      <meta name="description" content="ArvinIO" />
       {/* <base href="http://localhost:8081/" /> */}
     </Helmet>
-    <div className={css.hello}>
-      <img src={logo} alt="ReactQL" className={css.logo} />
-    </div>
-    <hr />
-    <GraphQLMessage />
-    <hr />
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/page/about">About</Link></li>
-      <li><Link to="/page/contact">Contact</Link></li>
-      <li><Link to="/old/path">Redirect from /old/path &#8594; /new/path</Link></li>
-    </ul>
-    Change routes anywhere &mdash; <button onClick={changeRoute}>Like here (About)</button>
-    <hr />
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/page/:name" component={Page} />
-      <Redirect from="/old/path" to="/new/path" />
-      <Route component={WhenNotFound} />
+      <Route exact path="/" component={Landing} />
+      <Route exact path="/login" component={Login} />
     </Switch>
-    <hr />
-    <ReduxCounter />
-    <hr />
-    <p>Runtime info:</p>
-    <Stats />
-    <hr />
-    <p>Stylesheet examples:</p>
-    <Styles />
   </div>
 );
