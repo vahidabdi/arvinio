@@ -28,7 +28,7 @@ import Main from 'components/main';
 
 // Init global styles.  These will be added to the resulting CSS automatically
 // without any class hashing.  Use this to include default or framework CSS.
-import './styles.global.css';
+import './styles/styles.global.css';
 
 // ----------------------
 
@@ -50,7 +50,8 @@ config.addReducer('counter', counterReducer, { count: 0 });
 //
 // 2.  On the client, it will append the correct server URL so that we can
 // call the ReactQL host properly, and let the server handle our requests
-config.enableGraphQLServer();
+config.setGraphQLEndpoint('http://localhost:4000/api');
+// config.enableGraphQLServer();
 
 /* SERVER */
 
@@ -164,7 +165,7 @@ if (SERVER) {
     // prototype (that per-request `ctx` extends) that can be
     // used in the middleware below, to set a `Powered-By` header.
     // eslint-disable-next-line no-param-reassign
-    app.context.engine = 'ReactQL';
+    app.context.engine = 'ArvinIO';
 
     // We'll also add a generic error handler, that prints out to the console.
     // Note: This is a 'lower-level' than `config.setErrorHandler()` because
