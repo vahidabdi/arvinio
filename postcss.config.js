@@ -10,10 +10,13 @@ const cssnext = require('postcss-cssnext');
 // CSSNano will optimise our stylesheet code
 const cssnano = require('cssnano');
 
+const rtlcss = require('rtlcss');
+
 module.exports = {
   plugins: [
     postcssNested(),
     cssnext(),
     cssnano(),
+    rtlcss(),
   ],
 };
