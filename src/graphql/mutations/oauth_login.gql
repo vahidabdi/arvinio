@@ -1,0 +1,11 @@
+mutation OauthLogin($provider: String!, $code: String!) {
+  login(provider: $provider, code: $code) {
+    user {
+      id
+      email
+      username
+      picture
+    }
+    jwt
+  }
+}

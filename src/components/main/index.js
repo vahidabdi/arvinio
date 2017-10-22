@@ -44,6 +44,10 @@ import Helmet from 'react-helmet';
 // multiple components per file where it makes sense to do so
 import Landing from 'components/landing';
 import Login from 'components/login';
+import OAuthCallback from 'components/oAuthCallback';
+import RequireAuth from 'components/requireAuth';
+import Dashboard from 'components/dashboard';
+import SurveyNew from 'components/survey/new';
 
 
 export default () => (
@@ -56,6 +60,9 @@ export default () => (
     <Switch>
       <Route exact path="/" component={Landing} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/auth/:provider/callback" component={OAuthCallback} />
+      <Route exact path="/dashboard" component={RequireAuth(Dashboard)} />
+      <Route exact path="/dashboard/survey/new" component={RequireAuth(SurveyNew)} />
     </Switch>
   </div>
 );

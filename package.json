@@ -110,7 +110,8 @@
     "rtlcss": "^2.2.0",
     "seamless-immutable": "^7.1.2",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.75.1"
+    "semantic-ui-react": "^0.75.1",
+    "url-search-params-polyfill": "^2.0.1"
   },
   "engines": {
     "node": ">=7",
