@@ -202,7 +202,19 @@ if (SERVER) {
     // middleware in the stack (likely, the React handler)
     return next();
   });
+} else {
+  // Add Apollo request middleware to use the latest JWT token on every
+  // request, so that our previously logged in state can be 'remembered'
+  config.addApolloMiddleware((req, next) => {
+    const jwt = localStorage.getItem('jwt');
+    req.options.headers = {
+      ...req.options.headers,
+      authorization: `Bearer ${jwt}` || null
+    };
+    next();
+  });
 }
+
 
 // In app.js, we need to export the root component we want to mount as the
 // starting point to our app.  We'll just export the `<Main>` component.
