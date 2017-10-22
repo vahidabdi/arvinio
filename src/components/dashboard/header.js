@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import {
   Container,
   Segment,
-  Menu
+  Menu,
+  Image
 } from 'semantic-ui-react';
 
 const Header = ({ currentUser }) => (
@@ -12,7 +13,10 @@ const Header = ({ currentUser }) => (
         <Menu.Item as={NavLink} exact to='/dashboard' name='داشبورد' />
         <Menu.Item as={NavLink} to='/dashboard/survey/new' name='پرسشنامه' />
         <Menu.Menu position='right'>
-          <Menu.Item as='a' name='خروج' />
+          <Menu.Item>
+            <Image src={currentUser.picture} avatar />
+            <span>{currentUser.email}</span>
+          </Menu.Item>
         </Menu.Menu>
       </Container>
     </Menu>
