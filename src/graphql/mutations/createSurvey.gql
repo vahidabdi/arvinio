@@ -1,0 +1,6 @@
+mutation CreateSurvey($input: SurveyInput!) {
+  createSurvey(input: $input) {
+    id
+    name
+  }
+}
