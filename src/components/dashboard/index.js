@@ -1,5 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import { Link } from 'react-router-dom';
+import { Grid, Card, Button, Header, Divider } from 'semantic-ui-react';
 
-const Dashboard = () => <div>Dashboard</div>;
+import query from 'src/graphql/queries/listSurvey.gql';
+
+@graphql(query)
+class Dashboard extends Component {
+  render() {
+    const { data } = this.props;
+    if (data.loading) {
+      return null;
+    }
+
+    return (
+      <div>
+        <Header as="h1">
+          پرسشنامه ها
+          <Button as={Link} to="/dashboard/survey/new" primary>+</Button>
+        </Header>
+        <Divider />
+        <Grid>
+          <Grid.Row columns={4} stretched>
+            {data.surveys.map(survey => {
+               return (
+                <Grid.Column>
+                  <Card color="purple" centered as={Link} to={`/dashboard/survey/${survey.id}/edit`} header={survey.name} />
+                </Grid.Column>
+               )
+            })}
+          </Grid.Row>
+        </Grid>
+      </div>
+    );
+  }
+}
 
 export default Dashboard;
