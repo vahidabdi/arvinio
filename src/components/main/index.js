@@ -48,6 +48,7 @@ import OAuthCallback from 'components/oAuthCallback';
 import RequireAuth from 'components/requireAuth';
 import Dashboard from 'components/dashboard';
 import SurveyNew from 'components/survey/new';
+import SurveyEdit from 'components/survey/edit';
 
 
 export default () => (
@@ -63,6 +64,7 @@ export default () => (
       <Route exact path="/auth/:provider/callback" component={OAuthCallback} />
       <Route exact path="/dashboard" component={RequireAuth(Dashboard)} />
       <Route exact path="/dashboard/survey/new" component={RequireAuth(SurveyNew)} />
+      <Route exact path="/dashboard/survey/:survey_id/edit" component={RequireAuth(SurveyEdit)} />
     </Switch>
   </div>
 );
