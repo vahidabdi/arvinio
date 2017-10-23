@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import 'url-search-params-polyfill';
-import mutation from 'src/graphql/mutations/oauth_login.gql';
+import mutation from 'src/graphql/mutations/oAuthLogin.gql';
 
 
 @graphql(mutation)
