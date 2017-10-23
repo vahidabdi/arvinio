@@ -20,16 +20,14 @@ class Dashboard extends Component {
           <Button as={Link} to="/dashboard/survey/new" primary>+</Button>
         </Header>
         <Divider />
-        <Grid>
-          <Grid.Row columns={4} stretched>
-            {data.surveys.map(survey => {
-               return (
-                <Grid.Column>
-                  <Card color="purple" centered as={Link} to={`/dashboard/survey/${survey.id}/edit`} header={survey.name} />
-                </Grid.Column>
-               )
-            })}
-          </Grid.Row>
+        <Grid columns={4} stretched>
+          {data.surveys.map(survey => {
+              return (
+              <Grid.Column key={survey.id}>
+                <Card color="purple" centered as={Link} to={`/dashboard/survey/${survey.id}/edit`} header={survey.name} />
+              </Grid.Column>
+              )
+          })}
         </Grid>
       </div>
     );
